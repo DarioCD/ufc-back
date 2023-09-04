@@ -11,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -52,16 +54,24 @@ public class Fighter {
 	@Column
 	private String record;
 
+	@Column
+	private Integer rankingNumber;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "fighter")
 	private Set<Fight> fights = new HashSet<Fight>();
+
+	@ManyToOne
+	@JoinColumn(name = "ranking_id")
+	private Ranking ranking;
 
 	public Fighter() {
 
 	}
 
 	public Fighter(Long id, String name, String surname, Date dateOfBirth, String nationality, Float weight,
-			Float height, Integer winFights, Integer lostFights, Integer drawFights, String record, Set<Fight> fights) {
+			Float height, Integer winFights, Integer lostFights, Integer drawFights, String record,
+			Integer rankingNumber, Set<Fight> fights, Ranking ranking) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -73,11 +83,14 @@ public class Fighter {
 		this.lostFights = lostFights;
 		this.drawFights = drawFights;
 		this.record = record;
+		this.rankingNumber = rankingNumber;
 		this.fights = fights;
+		this.ranking = ranking;
 	}
 
 	public Fighter(String name, String surname, Date dateOfBirth, String nationality, Float weight, Float height,
-			Integer winFights, Integer lostFights, Integer drawFights, String record, Set<Fight> fights) {
+			Integer winFights, Integer lostFights, Integer drawFights, String record, Integer rankingNumber,
+			Set<Fight> fights, Ranking ranking) {
 		this.name = name;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
@@ -88,7 +101,9 @@ public class Fighter {
 		this.lostFights = lostFights;
 		this.drawFights = drawFights;
 		this.record = record;
+		this.rankingNumber = rankingNumber;
 		this.fights = fights;
+		this.ranking = ranking;
 	}
 
 	public Integer getDrawFights() {
@@ -121,6 +136,14 @@ public class Fighter {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public Ranking getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 	public Date getDateOfBirth() {
@@ -171,6 +194,14 @@ public class Fighter {
 		this.record = record;
 	}
 
+	public Integer getRankingNumber() {
+		return rankingNumber;
+	}
+
+	public void setRankingNumber(Integer rankingNumber) {
+		this.rankingNumber = rankingNumber;
+	}
+
 	public Float getHeight() {
 		return height;
 	}
@@ -186,11 +217,9 @@ public class Fighter {
 	public void setFights(Set<Fight> fights) {
 		this.fights = fights;
 	}
-	
+
 	public void updateRecord() {
-	    this.record = winFights + " - " + lostFights + " - " + drawFights;
+		this.record = winFights + " - " + lostFights + " - " + drawFights;
 	}
-	
-	
 
 }
