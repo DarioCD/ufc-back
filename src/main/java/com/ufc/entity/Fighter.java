@@ -28,6 +28,9 @@ public class Fighter {
 	private String name;
 
 	@Column
+	private String nickname;
+
+	@Column
 	private String surname;
 
 	@Column
@@ -43,6 +46,15 @@ public class Fighter {
 	private Float height;
 
 	@Column
+	private Integer age;
+
+	@Column
+	private Float reach;
+
+	@Column
+	private Float legReach;
+
+	@Column
 	private Integer winFights;
 
 	@Column
@@ -53,6 +65,12 @@ public class Fighter {
 
 	@Column
 	private String record;
+
+	@Column
+	private String gym;
+
+	@Column
+	private String fightStyle;
 
 	@Column
 	private Integer rankingNumber;
@@ -69,38 +87,52 @@ public class Fighter {
 
 	}
 
-	public Fighter(Long id, String name, String surname, Date dateOfBirth, String nationality, Float weight,
-			Float height, Integer winFights, Integer lostFights, Integer drawFights, String record,
-			Integer rankingNumber, Set<Fight> fights, Ranking ranking) {
+	public Fighter(Long id, String name, String nickname, String surname, Date dateOfBirth, String nationality,
+			Float weight, Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
+			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
+			Ranking ranking) {
 		this.id = id;
 		this.name = name;
+		this.nickname = nickname;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
 		this.nationality = nationality;
 		this.weight = weight;
 		this.height = height;
+		this.age = age;
+		this.reach = reach;
+		this.legReach = legReach;
 		this.winFights = winFights;
 		this.lostFights = lostFights;
 		this.drawFights = drawFights;
 		this.record = record;
+		this.gym = gym;
+		this.fightStyle = fightStyle;
 		this.rankingNumber = rankingNumber;
 		this.fights = fights;
 		this.ranking = ranking;
 	}
 
-	public Fighter(String name, String surname, Date dateOfBirth, String nationality, Float weight, Float height,
-			Integer winFights, Integer lostFights, Integer drawFights, String record, Integer rankingNumber,
-			Set<Fight> fights, Ranking ranking) {
+	public Fighter(String name, String nickname, String surname, Date dateOfBirth, String nationality, Float weight,
+			Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
+			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
+			Ranking ranking) {
 		this.name = name;
+		this.nickname = nickname;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
 		this.nationality = nationality;
 		this.weight = weight;
 		this.height = height;
+		this.age = age;
+		this.reach = reach;
+		this.legReach = legReach;
 		this.winFights = winFights;
 		this.lostFights = lostFights;
 		this.drawFights = drawFights;
 		this.record = record;
+		this.gym = gym;
+		this.fightStyle = fightStyle;
 		this.rankingNumber = rankingNumber;
 		this.fights = fights;
 		this.ranking = ranking;
@@ -216,6 +248,55 @@ public class Fighter {
 
 	public void setFights(Set<Fight> fights) {
 		this.fights = fights;
+	}
+	
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Float getReach() {
+		return reach;
+	}
+
+	public void setReach(Float reach) {
+		this.reach = reach;
+	}
+
+	public Float getLegReach() {
+		return legReach;
+	}
+
+	public void setLegReach(Float legReach) {
+		this.legReach = legReach;
+	}
+
+	public String getGym() {
+		return gym;
+	}
+
+	public void setGym(String gym) {
+		this.gym = gym;
+	}
+
+	public String getFightStyle() {
+		return fightStyle;
+	}
+
+	public void setFightStyle(String fightStyle) {
+		this.fightStyle = fightStyle;
 	}
 
 	public void updateRecord() {
