@@ -1,12 +1,17 @@
 package com.ufc.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -42,37 +47,56 @@ public class Fighter {
 	private Integer lostFights;
 
 	@Column
+	private Integer drawFights;
+
+	@Column
 	private String record;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "fighter")
+	private Set<Fight> fights = new HashSet<Fight>();
 
 	public Fighter() {
 
 	}
 
 	public Fighter(Long id, String name, String surname, Date dateOfBirth, String nationality, Float weight,
-			Integer winFights, Integer lostFights, String record, Float height) {
+			Float height, Integer winFights, Integer lostFights, Integer drawFights, String record, Set<Fight> fights) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
 		this.nationality = nationality;
 		this.weight = weight;
+		this.height = height;
 		this.winFights = winFights;
 		this.lostFights = lostFights;
+		this.drawFights = drawFights;
 		this.record = record;
-		this.height = height;
+		this.fights = fights;
 	}
 
-	public Fighter(String name, String surname, Date dateOfBirth, String nationality, Float weight, Integer winFights,
-			Integer lostFights, String record, Float height) {
+	public Fighter(String name, String surname, Date dateOfBirth, String nationality, Float weight, Float height,
+			Integer winFights, Integer lostFights, Integer drawFights, String record, Set<Fight> fights) {
 		this.name = name;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
 		this.nationality = nationality;
 		this.weight = weight;
+		this.height = height;
 		this.winFights = winFights;
 		this.lostFights = lostFights;
+		this.drawFights = drawFights;
 		this.record = record;
-		this.height = height;
+		this.fights = fights;
+	}
+
+	public Integer getDrawFights() {
+		return drawFights;
+	}
+
+	public void setDrawFights(Integer drawFights) {
+		this.drawFights = drawFights;
 	}
 
 	public Long getId() {
@@ -154,5 +178,19 @@ public class Fighter {
 	public void setHeight(Float height) {
 		this.height = height;
 	}
+
+	public Set<Fight> getFights() {
+		return fights;
+	}
+
+	public void setFights(Set<Fight> fights) {
+		this.fights = fights;
+	}
+	
+	public void updateRecord() {
+	    this.record = winFights + " - " + lostFights + " - " + drawFights;
+	}
+	
+	
 
 }

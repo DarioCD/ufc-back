@@ -1,11 +1,15 @@
 package com.ufc.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ufc.entity.Fight;
 import com.ufc.entity.Fighter;
+import com.ufc.repository.FightRepository;
 import com.ufc.repository.FighterRepository;
 
 @Service
@@ -14,8 +18,11 @@ public class FighterService {
 	@Autowired
 	FighterRepository fighterRepository;
 
+	@Autowired
+	FightRepository fightRepository;
+
 	public Fighter addFighter(Fighter fighter) {
-		fighter.setRecord(fighter.getWinFights() + " - " + fighter.getLostFights());
+		fighter.updateRecord();
 		return fighterRepository.save(fighter);
 	}
 
@@ -46,6 +53,15 @@ public class FighterService {
 			existingFighter.setWinFights(fighter.getWinFights());
 			return fighterRepository.save(existingFighter);
 		}).orElse(null) : null;
+	}
+
+	public Set<Fight> getAllFights(Long id) {
+		if (id == null) {
+			return null;
+		}
+		Optional<Fighter> optional = fighterRepository.findById(id);
+
+		return optional.get().getFights();
 	}
 
 }
