@@ -4,16 +4,14 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -75,9 +73,8 @@ public class Fighter {
 	@Column
 	private Integer rankingNumber;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "fighter")
-	private Set<Fight> fights = new HashSet<Fight>();
+	@ManyToMany(mappedBy = "fighters")
+    private Set<Fight> fights = new HashSet<>();
 
 	@ManyToOne
 	@JoinColumn(name = "ranking_id")

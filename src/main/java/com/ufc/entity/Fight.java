@@ -1,11 +1,18 @@
 package com.ufc.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -18,16 +25,16 @@ public class Fight {
 	private Long id;
 
 	@Column
+	private String title;
+
+	@Column
 	private String result;
 
 	@Column
-	private String rival;
+	private String mehtod;
 
 	@Column
-	private String method;
-
-	@Column
-	private Integer round;
+	private String round;
 
 	@Column
 	private String time;
@@ -35,34 +42,41 @@ public class Fight {
 	@Column
 	private String company;
 
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "fight_fighter", joinColumns = @JoinColumn(name = "fight_id"), inverseJoinColumns = @JoinColumn(name = "fighter_id"))
+	private Set<Fighter> fighters = new HashSet<Fighter>();
+
 	@ManyToOne
-	@JoinColumn(name = "fighter_id")
-	private Fighter fighter;
+	@JoinColumn(name = "event_id")
+	private Event event;
 
 	public Fight() {
 	}
 
-	public Fight(Long id, String result, String rival, String method, Integer round, String time, String company,
-			Fighter fighter) {
-		this.id = id;
+	public Fight(String title, String result, String mehtod, String round, String time, String company,
+			Set<Fighter> fighters, Event event) {
+		this.title = title;
 		this.result = result;
-		this.rival = rival;
-		this.method = method;
+		this.mehtod = mehtod;
 		this.round = round;
 		this.time = time;
 		this.company = company;
-		this.fighter = fighter;
+		this.fighters = fighters;
+		this.event = event;
 	}
 
-	public Fight(String result, String rival, String method, Integer round, String time, String company,
-			Fighter fighter) {
+	public Fight(Long id, String title, String result, String mehtod, String round, String time, String company,
+			Set<Fighter> fighters, Event event) {
+		this.id = id;
+		this.title = title;
 		this.result = result;
-		this.rival = rival;
-		this.method = method;
+		this.mehtod = mehtod;
 		this.round = round;
 		this.time = time;
 		this.company = company;
-		this.fighter = fighter;
+		this.fighters = fighters;
+		this.event = event;
 	}
 
 	public Long getId() {
@@ -73,44 +87,12 @@ public class Fight {
 		this.id = id;
 	}
 
-	public String getResult() {
-		return result;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setResult(String result) {
-		this.result = result;
-	}
-
-	public String getRival() {
-		return rival;
-	}
-
-	public void setRival(String rival) {
-		this.rival = rival;
-	}
-
-	public String getMethod() {
-		return method;
-	}
-
-	public void setMethod(String method) {
-		this.method = method;
-	}
-
-	public Integer getRound() {
-		return round;
-	}
-
-	public void setRound(Integer round) {
-		this.round = round;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getCompany() {
@@ -121,12 +103,52 @@ public class Fight {
 		this.company = company;
 	}
 
-	public Fighter getFighter() {
-		return fighter;
+	public Set<Fighter> getFighters() {
+		return fighters;
 	}
 
-	public void setFighter(Fighter fighter) {
-		this.fighter = fighter;
+	public void setFighters(Set<Fighter> fighters) {
+		this.fighters = fighters;
+	}
+
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+	public String getMehtod() {
+		return mehtod;
+	}
+
+	public void setMehtod(String mehtod) {
+		this.mehtod = mehtod;
+	}
+
+	public String getRound() {
+		return round;
+	}
+
+	public void setRound(String round) {
+		this.round = round;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }
