@@ -138,14 +138,6 @@ public class Fighter {
 		this.ranking = ranking;
 	}
 
-	public Integer getDrawFights() {
-		return drawFights;
-	}
-
-	public void setDrawFights(Integer drawFights) {
-		this.drawFights = drawFights;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -162,20 +154,20 @@ public class Fighter {
 		this.name = name;
 	}
 
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	public String getSurname() {
 		return surname;
 	}
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public Ranking getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(Ranking ranking) {
-		this.ranking = ranking;
 	}
 
 	public Date getDateOfBirth() {
@@ -202,61 +194,12 @@ public class Fighter {
 		this.weight = weight;
 	}
 
-	public Integer getWinFights() {
-		return winFights;
-	}
-
-	public void setWinFights(Integer winFights) {
-		this.winFights = winFights;
-	}
-
-	public Integer getLostFights() {
-		return lostFights;
-	}
-
-	public void setLostFights(Integer lostFights) {
-		this.lostFights = lostFights;
-	}
-
-	public String getRecord() {
-		return record;
-	}
-
-	public void setRecord(String record) {
-		this.record = record;
-	}
-
-	public Integer getRankingNumber() {
-		return rankingNumber;
-	}
-
-	public void setRankingNumber(Integer rankingNumber) {
-		this.rankingNumber = rankingNumber;
-	}
-
 	public Float getHeight() {
 		return height;
 	}
 
 	public void setHeight(Float height) {
 		this.height = height;
-	}
-
-	public Set<Fight> getFights() {
-		return fights;
-	}
-
-	public void setFights(Set<Fight> fights) {
-		this.fights = fights;
-	}
-	
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
 	}
 
 	public Integer getAge() {
@@ -283,6 +226,38 @@ public class Fighter {
 		this.legReach = legReach;
 	}
 
+	public Integer getWinFights() {
+		return winFights;
+	}
+
+	public void setWinFights(Integer winFights) {
+		this.winFights = winFights;
+	}
+
+	public Integer getLostFights() {
+		return lostFights;
+	}
+
+	public void setLostFights(Integer lostFights) {
+		this.lostFights = lostFights;
+	}
+
+	public Integer getDrawFights() {
+		return drawFights;
+	}
+
+	public void setDrawFights(Integer drawFights) {
+		this.drawFights = drawFights;
+	}
+
+	public String getRecord() {
+		return record;
+	}
+
+	public void setRecord(String record) {
+		this.record = record;
+	}
+
 	public String getGym() {
 		return gym;
 	}
@@ -297,6 +272,30 @@ public class Fighter {
 
 	public void setFightStyle(String fightStyle) {
 		this.fightStyle = fightStyle;
+	}
+
+	public Integer getRankingNumber() {
+		return rankingNumber;
+	}
+
+	public void setRankingNumber(Integer rankingNumber) {
+		this.rankingNumber = rankingNumber;
+	}
+
+	public Set<Fight> getFights() {
+		return fights;
+	}
+
+	public void setFights(Set<Fight> fights) {
+		this.fights = fights;
+	}
+
+	public Ranking getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(Ranking ranking) {
+		this.ranking = ranking;
 	}
 
 	public void updateRecord() {
