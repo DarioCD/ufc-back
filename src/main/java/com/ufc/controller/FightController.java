@@ -38,11 +38,12 @@ public class FightController {
 			throw e;
 		}
 	}
-	
-	@PostMapping("/fight/{fightId}")
-	public Fight addResultFight(@PathVariable Long fightId, @RequestBody Fight result) {
+
+	@PostMapping("/fight/{fightId}/{winFighterId}/{lostFighterId}")
+	public Fight addResultFight(@PathVariable Long fightId, @RequestBody Fight result, @PathVariable Long winFighterId,
+			@PathVariable Long lostFighterId) {
 		try {
-			return fightService.addResultFight(fightId, result);
+			return fightService.addResultFight(fightId, result, winFighterId, lostFighterId);
 		} catch (Exception e) {
 			throw e;
 		}

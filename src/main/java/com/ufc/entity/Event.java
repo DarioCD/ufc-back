@@ -20,7 +20,7 @@ public class Event {
 	private Long id;
 
 	@Column
-	private Long title;
+	private String title;
 
 	@Column
 	private Date fightDate;
@@ -37,7 +37,7 @@ public class Event {
 	public Event() {
 	}
 
-	public Event(Long id, Long title, Date fightDate, String place, String information, List<Fight> fights) {
+	public Event(Long id, String title, Date fightDate, String place, String information, List<Fight> fights) {
 		this.id = id;
 		this.title = title;
 		this.fightDate = fightDate;
@@ -46,7 +46,7 @@ public class Event {
 		this.fights = fights;
 	}
 
-	public Event(Long title, Date fightDate, String place, String information, List<Fight> fights) {
+	public Event(String title, Date fightDate, String place, String information, List<Fight> fights) {
 		this.title = title;
 		this.fightDate = fightDate;
 		this.place = place;
@@ -62,11 +62,11 @@ public class Event {
 		this.id = id;
 	}
 
-	public Long getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(Long title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 

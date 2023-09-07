@@ -65,14 +65,27 @@ public class FightService {
 		if (fightOp.isPresent()) {
 			Fight fight = fightOp.get();
 			if (winFighterOp.isPresent() && lostFighterOp.isPresent()) {
+
+				// Resultados de la pelea
 				Fighter winFighter = winFighterOp.get();
 				Fighter lostFighter = lostFighterOp.get();
 				fight.setMehtod(results.getMehtod());
-				fight.setResult(winFighter + " gano por " + results.getMehtod() + " en el round " + results.getRound() + " - " + results.getTime() + " al peleador " + lostFighter);
+				fight.setResult(winFighter.getName() + " gano por " + results.getMehtod() + " en el round " + results.getRound()
+						+ " - " + results.getTime() + " al peleador " + lostFighter.getName());
 				fight.setRound(results.getRound());
 				fight.setTime(results.getTime());
 
-				fightRepository.save(fight);
+				// Añadir la victoria al peleador que gano y actualizar su record
+				winFighter.setWinFights(winFighter.getWinFights() + 1);
+				winFighter.updateRecord();
+
+				// Añadir la derrota al peleador que perdió y actualizar su record
+				lostFighter.setLostFights(lostFighter.getLostFights() + 1);
+				winFighter.updateRecord();
+
+				// Guardar todo
+				fighterRepository.save(winFighter);
+				fighterRepository.save(lostFighter);
 
 				return fightRepository.save(fight);
 			}

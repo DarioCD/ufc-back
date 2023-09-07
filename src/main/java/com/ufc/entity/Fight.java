@@ -47,6 +47,7 @@ public class Fight {
 	@JoinTable(name = "fight_fighter", joinColumns = @JoinColumn(name = "fight_id"), inverseJoinColumns = @JoinColumn(name = "fighter_id"))
 	private Set<Fighter> fighters = new HashSet<Fighter>();
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "event_id")
 	private Event event;
