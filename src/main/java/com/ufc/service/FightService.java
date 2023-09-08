@@ -1,6 +1,7 @@
 package com.ufc.service;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,8 +71,8 @@ public class FightService {
 				Fighter winFighter = winFighterOp.get();
 				Fighter lostFighter = lostFighterOp.get();
 				fight.setMehtod(results.getMehtod());
-				fight.setResult(winFighter.getName() + " gano por " + results.getMehtod() + " en el round " + results.getRound()
-						+ " - " + results.getTime() + " al peleador " + lostFighter.getName());
+				fight.setResult(winFighter.getName() + " gano por " + results.getMehtod() + " en el round "
+						+ results.getRound() + " - " + results.getTime() + " al peleador " + lostFighter.getName());
 				fight.setRound(results.getRound());
 				fight.setTime(results.getTime());
 
@@ -92,6 +93,16 @@ public class FightService {
 		}
 		return null;
 
+	}
+
+	public Set<Fighter> getFighterFromFight(Long id) {
+		Optional<Fight> fightOp = fightRepository.findById(id);
+
+		if (fightOp.isPresent()) {
+			return fightOp.get().getFighters();
+		}
+
+		return null;
 	}
 
 }

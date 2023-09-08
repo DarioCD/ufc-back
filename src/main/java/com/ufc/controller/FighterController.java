@@ -35,7 +35,7 @@ public class FighterController {
 		}
 	}
 	
-	@GetMapping("/fighters")
+	@GetMapping("/fighter")
 	public List<Fighter> getAllFighters(){
 		return fighterService.getAllFighters();
 	}
@@ -45,8 +45,14 @@ public class FighterController {
 		return fighterService.getFighterById(id);
 	}
 	
-	@GetMapping("/fighter/fights/{id}")
-	public Set<Fight> getFightsrById(@PathVariable Long id){
+	@GetMapping("/fighter/fight/{id}")
+	public Set<Fight> getAllFights(@PathVariable Long id){
 		return fighterService.getAllFights(id);
 	}
+	
+	@GetMapping("/fighter/name/{name}/nickname/{nickname}")
+	public List<Fighter> getFighterByNameAndNickname(@PathVariable String name, @PathVariable String nickname){
+	    return fighterService.getFighterByNameAndNickname(name, nickname);
+	}
+
 }

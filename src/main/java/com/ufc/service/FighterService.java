@@ -64,4 +64,13 @@ public class FighterService {
 		return optional.get().getFights();
 	}
 
+	public List<Fighter> getFighterByNameAndNickname(String name, String nickname) {
+		List<Fighter> fightersByName = fighterRepository.findByName(name);
+		List<Fighter> fightersByNickname = fighterRepository.findByNickname(nickname);
+
+		fightersByName.retainAll(fightersByNickname);
+
+		return fightersByName;
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.ufc.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufc.entity.Fight;
+import com.ufc.entity.Fighter;
 import com.ufc.service.FightService;
 
 @CrossOrigin(origins = "*")
@@ -53,6 +56,15 @@ public class FightController {
 	public Fight getFightById(@PathVariable Long id) {
 		try {
 			return fightService.getFightById(id);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	@GetMapping("/fight/{id}/fighter")
+	public Set<Fighter> getFighterFromFight(@PathVariable Long id) {
+		try {
+			return fightService.getFighterFromFight(id);
 		} catch (Exception e) {
 			throw e;
 		}
