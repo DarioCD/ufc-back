@@ -72,6 +72,9 @@ public class Fighter {
 
 	@Column
 	private Integer rankingNumber;
+	
+	@Column
+	private String fighterPhoto;
 
 	@ManyToMany(mappedBy = "fighters")
     private Set<Fight> fights = new HashSet<>();
@@ -87,7 +90,7 @@ public class Fighter {
 	public Fighter(Long id, String name, String nickname, String surname, Date dateOfBirth, String nationality,
 			Float weight, Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
 			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking) {
+			Ranking ranking, String fighterPhoto) {
 		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
@@ -108,12 +111,13 @@ public class Fighter {
 		this.rankingNumber = rankingNumber;
 		this.fights = fights;
 		this.ranking = ranking;
+		this.fighterPhoto = fighterPhoto;
 	}
 
 	public Fighter(String name, String nickname, String surname, Date dateOfBirth, String nationality, Float weight,
 			Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
 			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking) {
+			Ranking ranking, String fighterPhoto) {
 		this.name = name;
 		this.nickname = nickname;
 		this.surname = surname;
@@ -133,6 +137,7 @@ public class Fighter {
 		this.rankingNumber = rankingNumber;
 		this.fights = fights;
 		this.ranking = ranking;
+		this.fighterPhoto = fighterPhoto;
 	}
 
 	public Long getId() {
@@ -297,6 +302,14 @@ public class Fighter {
 
 	public void updateRecord() {
 		this.record = winFights + " - " + lostFights + " - " + drawFights;
+	}
+
+	public String getFighterPhoto() {
+		return fighterPhoto;
+	}
+
+	public void setFighterPhoto(String fighterPhoto) {
+		this.fighterPhoto = fighterPhoto;
 	}
 
 }
