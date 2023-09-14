@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufc.entity.Fighter;
+import com.ufc.entity.Ranking;
 import com.ufc.service.RankingService;
 
 @CrossOrigin(origins = "*")
@@ -35,6 +36,16 @@ public class RankingController {
 	@GetMapping("/fighters/ranking/{id}")
 	public List<Fighter> getAllFighters(@PathVariable Long id){
 		return rankingService.getAllFightersFromRanking(id);
+	}
+	
+	@GetMapping("/ranking/fighter/{id}")
+	public Ranking getRankingByFighterId(@PathVariable Long id){
+		return rankingService.getRankingByFighterId(id);
+	}
+	
+	@GetMapping("/ranking")
+	public List<Ranking> getAll(){
+		return rankingService.getAll();
 	}
 
 }

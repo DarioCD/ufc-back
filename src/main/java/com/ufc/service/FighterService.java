@@ -1,5 +1,7 @@
 package com.ufc.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -37,6 +39,22 @@ public class FighterService {
 	public List<Fighter> getAllFighters() {
 		return fighterRepository.findAll();
 	}
+	
+	public List<Fighter> getAllChampFighters() {
+	    List<Fighter> fighters = fighterRepository.findAll();
+	    List<Fighter> champfighters = new ArrayList<>();
+	    
+	    System.out.println(fighters.size());
+	    
+	    for (int i = 0; i < fighters.size(); i++) {
+	        if (fighters.get(i).getRankingNumber() == 0) {
+	            System.out.println("si");
+	            champfighters.add(fighters.get(i));
+	        }
+	    }
+	    return champfighters;
+	}
+
 
 	public int deleteFighter(Long id) {
 		try {

@@ -52,6 +52,11 @@ public class FighterController {
 		return fighterService.getAllFighters();
 	}
 	
+	@GetMapping("/fighter/champs")
+	public List<Fighter> getAllChampsFighters(){
+		return fighterService.getAllChampFighters();
+	}
+	
 	@GetMapping("/fighter/{id}")
 	public Fighter getFighterById(@PathVariable Long id){
 		return fighterService.getFighterById(id);

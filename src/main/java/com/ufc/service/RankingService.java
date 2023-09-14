@@ -57,5 +57,14 @@ public class RankingService {
 	        return Collections.emptyList(); 
 	    }
 	}
+	
+	public Ranking getRankingByFighterId (Long id) {
+		Fighter fighter = fighterRepository.findById(id).get();
+		return fighter.getRanking();
+	}
+	
+	public List<Ranking> getAll () {
+		return rankingRepository.findAll();
+	}
 
 }
