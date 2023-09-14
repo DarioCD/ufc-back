@@ -1,6 +1,6 @@
 package com.ufc.entity;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -20,10 +20,13 @@ public class Event {
 	private Long id;
 
 	@Column
+	private String eventNumber;
+
+	@Column
 	private String title;
 
 	@Column
-	private Date fightDate;
+	private LocalDateTime fightDate;
 
 	@Column
 	private String place;
@@ -37,8 +40,10 @@ public class Event {
 	public Event() {
 	}
 
-	public Event(Long id, String title, Date fightDate, String place, String information, List<Fight> fights) {
+	public Event(Long id, String eventNumber, String title, LocalDateTime fightDate, String place, String information,
+			List<Fight> fights) {
 		this.id = id;
+		this.eventNumber = eventNumber;
 		this.title = title;
 		this.fightDate = fightDate;
 		this.place = place;
@@ -46,7 +51,9 @@ public class Event {
 		this.fights = fights;
 	}
 
-	public Event(String title, Date fightDate, String place, String information, List<Fight> fights) {
+	public Event(String eventNumber, String title, LocalDateTime fightDate, String place, String information,
+			List<Fight> fights) {
+		this.eventNumber = eventNumber;
 		this.title = title;
 		this.fightDate = fightDate;
 		this.place = place;
@@ -70,11 +77,11 @@ public class Event {
 		this.title = title;
 	}
 
-	public Date getFightDate() {
+	public LocalDateTime getFightDate() {
 		return fightDate;
 	}
 
-	public void setFightDate(Date fightDate) {
+	public void setFightDate(LocalDateTime fightDate) {
 		this.fightDate = fightDate;
 	}
 
@@ -100,6 +107,14 @@ public class Event {
 
 	public void setFights(List<Fight> fights) {
 		this.fights = fights;
+	}
+
+	public String getEventNumber() {
+		return eventNumber;
+	}
+
+	public void setEventNumber(String eventNumber) {
+		this.eventNumber = eventNumber;
 	}
 
 }

@@ -152,3 +152,12 @@ INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_bi
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number) VALUES (126, "Augusto", "SAKAI", "Sakai", 265, 76, "1991-07-19", 30, 77, 43, "CURITIBA, BRAZIL", 16, 2, 1, "16-2-1", "8", "13");
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number) VALUES (127, "Tom", "THE TANK", "Aspinall", 265, 76, "1993-05-01", 28, 75, 40, "WIGAN, ENGLAND", 12, 2, 0, "12-2-0", "8", "14");
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number) VALUES (128, "Alex", "THE GREAT", "Lungu", 265, 72, "1974-08-26", 47, 78, 40, "BUCHAREST, ROMANIA", 12, 4, 0, "12-4-0", "8", "15");
+
+/* Evento */
+
+INSERT INTO ufc.event (id, fight_date, event_number, information, place, title) VALUES (1, "2023-10-06T01:00:00", "UFC 293", "ESTO ES UNA PRUEBA DE EVENTO", "MADRID", "PELEADOR 1 VS PELEADOR 2");
+
+/* Peleas */
+INSERT INTO ufc.fight (id, event_id, company, title) VALUES (1,1, "UFC", "PRUEBA 1 VS PRUEBA 2");
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (1,1);
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (1,2);
