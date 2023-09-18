@@ -72,12 +72,15 @@ public class Fighter {
 
 	@Column
 	private Integer rankingNumber;
-	
+
 	@Column
 	private String fighterPhoto;
 
+	@Column
+	private String fighterFullPhoto;
+
 	@ManyToMany(mappedBy = "fighters")
-    private Set<Fight> fights = new HashSet<>();
+	private Set<Fight> fights = new HashSet<>();
 
 	@ManyToOne
 	@JoinColumn(name = "ranking_id")
@@ -90,7 +93,7 @@ public class Fighter {
 	public Fighter(Long id, String name, String nickname, String surname, Date dateOfBirth, String nationality,
 			Float weight, Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
 			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking, String fighterPhoto) {
+			Ranking ranking, String fighterPhoto, String fighterFullPhoto) {
 		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
@@ -112,12 +115,13 @@ public class Fighter {
 		this.fights = fights;
 		this.ranking = ranking;
 		this.fighterPhoto = fighterPhoto;
+		this.fighterFullPhoto = fighterFullPhoto;
 	}
 
 	public Fighter(String name, String nickname, String surname, Date dateOfBirth, String nationality, Float weight,
 			Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
 			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking, String fighterPhoto) {
+			Ranking ranking, String fighterPhoto, String fighterFullPhoto) {
 		this.name = name;
 		this.nickname = nickname;
 		this.surname = surname;
@@ -138,6 +142,7 @@ public class Fighter {
 		this.fights = fights;
 		this.ranking = ranking;
 		this.fighterPhoto = fighterPhoto;
+		this.fighterFullPhoto = fighterFullPhoto;
 	}
 
 	public Long getId() {
@@ -310,6 +315,14 @@ public class Fighter {
 
 	public void setFighterPhoto(String fighterPhoto) {
 		this.fighterPhoto = fighterPhoto;
+	}
+
+	public String getFighterFullPhoto() {
+		return fighterFullPhoto;
+	}
+
+	public void setFighterFullPhoto(String fighterFullPhoto) {
+		this.fighterFullPhoto = fighterFullPhoto;
 	}
 
 }
