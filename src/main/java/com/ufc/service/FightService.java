@@ -43,7 +43,9 @@ public class FightService {
 				fight.setTitle(fighter1.getName() + " vs " + fighter2.getName());
 
 				fight.getFighters().add(fighter1);
+				fight.setFighter1(fighter1.getNickname());
 				fight.getFighters().add(fighter2);
+				fight.setFighter2(fighter2.getNickname());
 				fighter1.getFights().add(fight);
 				fighter2.getFights().add(fight);
 

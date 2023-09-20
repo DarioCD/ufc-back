@@ -3,6 +3,8 @@ package com.ufc.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class Event {
 	@Column
 	private String information;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "event")
 	private List<Fight> fights;
 

@@ -58,6 +58,19 @@ public class EventService {
 		}
 		return null;
 	}
+	
+	public Event getEvenByFightId(Long id) {
+		if (id == null) {
+			return null;
+		}
+
+		Optional<Event> eventOp = eventRepository.findById(id);
+
+		if (eventOp.isPresent()) {
+			return eventOp.get();
+		}
+		return null;
+	}
 
 	public List<Event> getAllEvents() {
 		return eventRepository.findAll();
