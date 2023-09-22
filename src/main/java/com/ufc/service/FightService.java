@@ -43,9 +43,7 @@ public class FightService {
 				fight.setTitle(fighter1.getName() + " vs " + fighter2.getName());
 
 				fight.getFighters().add(fighter1);
-				fight.setFighter1(fighter1.getNickname());
 				fight.getFighters().add(fighter2);
-				fight.setFighter2(fighter2.getNickname());
 				fighter1.getFights().add(fight);
 				fighter2.getFights().add(fight);
 
@@ -80,11 +78,13 @@ public class FightService {
 
 				// Añadir la victoria al peleador que gano y actualizar su record
 				winFighter.setWinFights(winFighter.getWinFights() + 1);
+				fight.setWinner(winFighter.getId());
 				winFighter.updateRecord();
 
 				// Añadir la derrota al peleador que perdió y actualizar su record
 				lostFighter.setLostFights(lostFighter.getLostFights() + 1);
-				winFighter.updateRecord();
+				fight.setLooser(lostFighter.getId());
+				lostFighter.updateRecord();
 
 				// Guardar todo
 				fighterRepository.save(winFighter);

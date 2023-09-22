@@ -3,7 +3,6 @@ package com.ufc.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -39,12 +38,12 @@ public class Fight {
 
 	@Column
 	private String time;
-	
-	@Column
-	private String fighter1;
 
 	@Column
-	private String fighter2;
+	private Long winner;
+
+	@Column
+	private Long looser;
 
 	@Column
 	private String company;
@@ -61,30 +60,30 @@ public class Fight {
 	public Fight() {
 	}
 
-	public Fight(String title, String result, String mehtod, String round, String time, String fighter1, String fighter2, String company,
-			Set<Fighter> fighters, Event event) {
+	public Fight(String title, String result, String mehtod, String round, String time, Long winner, Long looser,
+			String company, Set<Fighter> fighters, Event event) {
 		this.title = title;
 		this.result = result;
 		this.mehtod = mehtod;
 		this.round = round;
 		this.time = time;
-		this.fighter1 = fighter1;
-		this.fighter2 = fighter2;
+		this.winner = winner;
+		this.looser = looser;
 		this.company = company;
 		this.fighters = fighters;
 		this.event = event;
 	}
 
-	public Fight(Long id, String title, String result, String mehtod, String round, String time, String fighter1, String fighter2,String company,
-			Set<Fighter> fighters, Event event) {
+	public Fight(Long id, String title, String result, String mehtod, String round, String time, Long winner,
+			Long looser, String company, Set<Fighter> fighters, Event event) {
 		this.id = id;
 		this.title = title;
 		this.result = result;
 		this.mehtod = mehtod;
 		this.round = round;
 		this.time = time;
-		this.fighter1 = fighter1;
-		this.fighter2 = fighter2;
+		this.winner = winner;
+		this.looser = looser;
 		this.company = company;
 		this.fighters = fighters;
 		this.event = event;
@@ -122,20 +121,20 @@ public class Fight {
 		this.fighters = fighters;
 	}
 
-	public String getFighter1() {
-		return fighter1;
+	public Long getWinner() {
+		return winner;
 	}
 
-	public void setFighter1(String fighter1) {
-		this.fighter1 = fighter1;
+	public void setWinner(Long winner) {
+		this.winner = winner;
 	}
 
-	public String getFighter2() {
-		return fighter2;
+	public Long getLooser() {
+		return looser;
 	}
 
-	public void setFighter2(String fighter2) {
-		this.fighter2 = fighter2;
+	public void setLooser(Long looser) {
+		this.looser = looser;
 	}
 
 	public Event getEvent() {
