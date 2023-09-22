@@ -11,9 +11,9 @@ INSERT INTO ufc.ranking VALUES (8, "Heavyweight", 265);
 
 /* Peleadores de Flyweight */
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo, fighter_full_photo) VALUES (1, "Alexandre", "THE CANNIBAL", "Pantoja", 125, 65, "1990-05-16", 33, 67, 36.5, "RIO DE JANEIRO, BRASIL", 26, 5, 0, "26-5-0", "1", "0", "THE_CANNIBAL_Pantoja_photo.png", "THE_CANNIBAL_Pantoja_photo_body.png");
-INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (2, "Brandon", "THE ASSASSIN BABY", "Moreno", 125, 67, "1993-12-07", 29, 70, 38, "TIJUANA, MÉXICO", 21, 7, 2, "21-7-2", "1", "1", "THE_ASSASSIN_BABY_Moreno_photo");
-INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (3, "Deiveson", "DEUS DA GUERRA", "Figueiredo", 125, 65, "1987-12-18", 35, 68, 38, "SOURE, BRASIL", 21, 3, 1, "21-3-1", "1", "2", "DEUS_DA_GUERRA_Figueiredo_photo");
-INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (4, "Amir", "THE PRINCE", "Albazi", 125, 65, "1993-09-27", 29, 68, 38, "BAGHDAD, IRAK", 17, 1, 0, "17-1-0", "1", "3", "THE_PRINCE_Albazi_photo");
+INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo, fighter_full_photo) VALUES (2, "Brandon", "THE ASSASSIN BABY", "Moreno", 125, 67, "1993-12-07", 29, 70, 38, "TIJUANA, MÉXICO", 21, 7, 2, "21-7-2", "1", "1", "THE_ASSASSIN_BABY_Moreno_photo.png", "THE_ASSASSIN_BABY_Moreno_photo_body.png" );
+INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo, fighter_full_photo) VALUES (3, "Deiveson", "DEUS DA GUERRA", "Figueiredo", 125, 65, "1987-12-18", 35, 68, 38, "SOURE, BRASIL", 21, 3, 1, "21-3-1", "1", "2", "DEUS_DA_GUERRA_Figueiredo_photo.png", "DEUS_DA_GUERRA_Figueiredo_photo_body.png");
+INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo, fighter_full_photo) VALUES (4, "Amir", "THE PRINCE", "Albazi", 125, 65, "1993-09-27", 29, 68, 38, "BAGHDAD, IRAK", 17, 1, 0, "17-1-0", "1", "3", "THE_PRINCE_Albazi_photo.png", "THE_PRINCE_Albazi_photo_body.png");
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (5, "Brandon", "RAW DAWG", "Royval", 125, 69, "1992-08-06", 30, 68, 38.5, "DENVER, ESTADOS UNIDOS", 15, 6, 0, "15-6-0", "1", "4", "RAW_DAWG_Royval_photo");
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (6, "Kai Kara-France", "DON'T BLINK", "", 125, 64, "1993-03-26", 30, 69, 37, "AUCKLAND, NUEVA ZELANDA", 24, 11, 0, "24-11-0", "1", "5", "DON'T_BLINK_Kai_Kara-France_photo");
 INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_birth, age, reach, leg_reach, nationality, win_fights, lost_fights, draw_fights, record, ranking_id, ranking_number, fighter_photo) VALUES (7, "John", "THE MAULER", "Doe", 125, 76, "1990-09-21", 32, 80, 40, "NEW YORK, USA", 20, 5, 1, "20-5-1", "1", "6", "THE_MAULER_Doe_photo");
@@ -155,9 +155,29 @@ INSERT INTO ufc.fighter (id, name, nickname, surname, weight, height, date_of_bi
 
 /* Evento */
 
-INSERT INTO ufc.event (id, fight_date, event_number, information, place, title) VALUES (1, "2023-10-06T01:00:00", "UFC 293", "ESTO ES UNA PRUEBA DE EVENTO", "MADRID", "PELEADOR 1 VS PELEADOR 2");
+INSERT INTO ufc.event (id, fight_date, event_number, information, place, title) VALUES (1, "2023-10-06T01:00:00", "UFC 293", "PELEA POR EL CINTURO DE PESO FLYWEIGHT", "MADRID", "ALEXANDRE PANTOJA VS BRANDON MORENO");
+INSERT INTO ufc.event (id, fight_date, event_number, information, place, title) VALUES (2, "2023-10-23T01:00:00", "UFC Fight Night", "PELEA RADNOM", "BRAZIL", "ALEXANDRE PANTOJA VS DEIVESON FIGUEREDO");
 
 /* Peleas */
-INSERT INTO ufc.fight (id, event_id, company, title) VALUES (1,1, "UFC", "PRUEBA 1 VS PRUEBA 2");
+INSERT INTO ufc.fight (id, event_id, company, title) VALUES (1,1, "UFC", "ALEXANDRE PANTOJA VS BRANDON MORENO");
 INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (1,1);
 INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (1,2);
+
+INSERT INTO ufc.fight (id, event_id, company, title) VALUES (2,1, "UFC", "Deiveson Figueiredo VS Amir Albazi");
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (2,3);
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (2,4);
+
+INSERT INTO ufc.fight (id, event_id, company, title) VALUES (3,2, "UFC", "ALEXANDRE PANTOJA VS DEIVESON FIGUEIREDO");
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (3,1);
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (3,3);
+
+INSERT INTO ufc.fight (id, event_id, company, title) VALUES (4,2, "UFC", "BRANDON MORENO VS Amir Albazi");
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (4,2);
+INSERT INTO ufc.fight_fighter(fight_id, fighter_id) VALUES (4,4);
+
+/* Resultados */
+UPDATE ufc.fight SET looser = 2, winner = 1, mehtod = 'KO', result = " - ", round = 1, time = '2:55' WHERE id = 1;
+UPDATE ufc.fight SET looser = 3, winner = 4, mehtod = 'SUB', result = " - ", round = 3, time = '2:55' WHERE id = 2;
+
+UPDATE ufc.fight SET looser = 3, winner = 1, mehtod = 'KO', result = " - ", round = 1, time = '0:55' WHERE id = 3;
+UPDATE ufc.fight SET looser = 2, winner = 4, mehtod = 'DEC', result = " - ", round = 3, time = '5:00' WHERE id = 4;
