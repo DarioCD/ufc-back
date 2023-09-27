@@ -10,42 +10,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufc.entity.Fighter;
-import com.ufc.entity.Ranking;
+import com.ufc.entity.RankingP4P;
 import com.ufc.repository.FighterRepository;
-import com.ufc.repository.RankingRepository;
+import com.ufc.repository.Rankingp4pRepository;
 
 @Service
-public class RankingService {
+public class Rankingp4pService {
 
 	@Autowired
-	RankingRepository rankingRepository;
+	Rankingp4pRepository rankingp4pRepository;
 
 	@Autowired
 	FighterRepository fighterRepository;
 
-	public Ranking addFighterToRank(Long idFighter, Long idRanking, Integer rankingNumber) {
+	public RankingP4P addFighterToRank(Long idFighter, Long idRanking, Integer rankingNumber) {
 
 		Optional<Fighter> fighter = fighterRepository.findById(idFighter);
-		Optional<Ranking> ranking = rankingRepository.findById(idRanking);
+		Optional<RankingP4P> rankingp4p = rankingp4pRepository.findById(idRanking);
 
-		if (fighter.isPresent() && ranking.isPresent()) {
-			ranking.get().getFighters().add(fighter.get());
-			fighter.get().setRanking(ranking.get());
+		if (fighter.isPresent() && rankingp4p.isPresent()) {
+			rankingp4p.get().getFighters().add(fighter.get());
+			fighter.get().setRankingP4P(rankingp4p.get());
 			fighter.get().setRankingNumber(rankingNumber);
-
-			rankingRepository.save(ranking.get());
+			rankingp4pRepository.save(rankingp4p.get());
 			fighterRepository.save(fighter.get());
 
 		}
 
-		return ranking.get();
+		return rankingp4p.get();
 	}
 
 	public List<Fighter> getAllFightersFromRanking(Long idRanking) {
-	    Optional<Ranking> rankingOptional = rankingRepository.findById(idRanking);
+	    Optional<RankingP4P> rankingOptional = rankingp4pRepository.findById(idRanking);
 	    
 	    if (rankingOptional.isPresent()) {
-	    	Ranking ranking = rankingOptional.get();
+	        RankingP4P ranking = rankingOptional.get();
 
 	        List<Fighter> fighters = ranking.getFighters()
 	                .stream()
@@ -58,13 +57,13 @@ public class RankingService {
 	    }
 	}
 	
-	public Ranking getRankingByFighterId (Long id) {
+	public RankingP4P getRankingByFighterId (Long id) {
 		Fighter fighter = fighterRepository.findById(id).get();
-		return fighter.getRanking();
+		return fighter.getRankingP4P();
 	}
 	
-	public List<Ranking> getAll () {
-		return rankingRepository.findAll();
+	public List<RankingP4P> getAll () {
+		return rankingp4pRepository.findAll();
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.ufc.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufc.entity.Event;
+import com.ufc.entity.Fight;
 import com.ufc.service.EventService;
 
 @CrossOrigin(origins = "*")
@@ -53,6 +55,24 @@ public class EventController {
 	public Event getEventById(@PathVariable Long id) {
 		try {
 			return eventService.getEventById(id);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	@GetMapping("/event/fight/{id}")
+	public List<Fight> getFightsByEventById(@PathVariable Long id) {
+		try {
+			return eventService.getFightByEvent(id);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	@GetMapping("/event/recent")
+	public Optional<Event> getRecentEvent() {
+		try {
+			return eventService.findNearestEvent();
 		} catch (Exception e) {
 			throw e;
 		}

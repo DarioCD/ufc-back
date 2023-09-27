@@ -1,5 +1,6 @@
 package com.ufc.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class EventService {
 				Fight fight = fightOp.get();
 				event.getFights().add(fight);
 				fight.setEvent(event);
-				
+
 				eventRepository.save(event);
 				fightRepository.save(fight);
 
@@ -58,7 +59,7 @@ public class EventService {
 		}
 		return null;
 	}
-	
+
 	public Event getEvenByFightId(Long id) {
 		if (id == null) {
 			return null;
@@ -74,5 +75,28 @@ public class EventService {
 
 	public List<Event> getAllEvents() {
 		return eventRepository.findAll();
+	}
+	
+	public Optional<Event> findNearestEvent() {
+		List<Event> events = eventRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+        Optional<Event> nearestEvent = Optional.empty();
+
+        for (Event event : events) {
+            LocalDateTime eventDate = event.getFightDate();
+            if (eventDate.isAfter(now)) {
+                if (!nearestEvent.isPresent() || eventDate.isBefore(nearestEvent.get().getFightDate())) {
+                    nearestEvent = Optional.of(event);
+                }
+            }
+        }
+
+        return nearestEvent;
+    }
+
+	public List<Fight> getFightByEvent(Long id) {
+		Event event = eventRepository.findById(id).get();
+
+		return event.getFights();
 	}
 }

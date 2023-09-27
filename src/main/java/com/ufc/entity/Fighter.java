@@ -74,6 +74,9 @@ public class Fighter {
 
 	@Column
 	private Integer rankingNumber;
+	
+	@Column
+	private Integer rankingp4pNumber;
 
 	@Column
 	private String fighterPhoto;
@@ -89,14 +92,18 @@ public class Fighter {
 	@JoinColumn(name = "ranking_id")
 	private Ranking ranking;
 
+	@ManyToOne
+	@JoinColumn(name = "rankingp4p_id")
+	private RankingP4P rankingP4P;
+
 	public Fighter() {
 
 	}
 
 	public Fighter(Long id, String name, String nickname, String surname, Date dateOfBirth, String nationality,
 			Float weight, Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
-			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking, String fighterPhoto, String fighterFullPhoto) {
+			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Integer rankingp4pNumber, Set<Fight> fights,
+			Ranking ranking, RankingP4P rankingP4P, String fighterPhoto, String fighterFullPhoto) {
 		this.id = id;
 		this.name = name;
 		this.nickname = nickname;
@@ -115,16 +122,18 @@ public class Fighter {
 		this.gym = gym;
 		this.fightStyle = fightStyle;
 		this.rankingNumber = rankingNumber;
+		this.rankingp4pNumber = rankingp4pNumber;
 		this.fights = fights;
 		this.ranking = ranking;
+		this.rankingP4P = rankingP4P;
 		this.fighterPhoto = fighterPhoto;
 		this.fighterFullPhoto = fighterFullPhoto;
 	}
 
 	public Fighter(String name, String nickname, String surname, Date dateOfBirth, String nationality, Float weight,
 			Float height, Integer age, Float reach, Float legReach, Integer winFights, Integer lostFights,
-			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber, Set<Fight> fights,
-			Ranking ranking, String fighterPhoto, String fighterFullPhoto) {
+			Integer drawFights, String record, String gym, String fightStyle, Integer rankingNumber,Integer rankingp4pNumber, Set<Fight> fights,
+			Ranking ranking, RankingP4P rankingP4P, String fighterPhoto, String fighterFullPhoto) {
 		this.name = name;
 		this.nickname = nickname;
 		this.surname = surname;
@@ -142,8 +151,10 @@ public class Fighter {
 		this.gym = gym;
 		this.fightStyle = fightStyle;
 		this.rankingNumber = rankingNumber;
+		this.rankingp4pNumber = rankingp4pNumber;
 		this.fights = fights;
 		this.ranking = ranking;
+		this.rankingP4P = rankingP4P;
 		this.fighterPhoto = fighterPhoto;
 		this.fighterFullPhoto = fighterFullPhoto;
 	}
@@ -292,6 +303,14 @@ public class Fighter {
 		this.rankingNumber = rankingNumber;
 	}
 
+	public Integer getRankingp4pNumber() {
+		return rankingp4pNumber;
+	}
+
+	public void setRankingp4pNumber(Integer rankingp4pNumber) {
+		this.rankingp4pNumber = rankingp4pNumber;
+	}
+
 	public Set<Fight> getFights() {
 		return fights;
 	}
@@ -306,6 +325,14 @@ public class Fighter {
 
 	public void setRanking(Ranking ranking) {
 		this.ranking = ranking;
+	}
+
+	public RankingP4P getRankingP4P() {
+		return rankingP4P;
+	}
+
+	public void setRankingP4P(RankingP4P rankingP4P) {
+		this.rankingP4P = rankingP4P;
 	}
 
 	public void updateRecord() {

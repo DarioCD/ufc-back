@@ -35,6 +35,9 @@ public class Event {
 
 	@Column
 	private String information;
+	
+	@Column
+	private String eventPhoto;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "event")
@@ -43,7 +46,7 @@ public class Event {
 	public Event() {
 	}
 
-	public Event(Long id, String eventNumber, String title, LocalDateTime fightDate, String place, String information,
+	public Event(Long id, String eventNumber, String title, LocalDateTime fightDate, String place, String information, String eventPhoto, 
 			List<Fight> fights) {
 		this.id = id;
 		this.eventNumber = eventNumber;
@@ -51,16 +54,18 @@ public class Event {
 		this.fightDate = fightDate;
 		this.place = place;
 		this.information = information;
+		this.eventPhoto = eventPhoto;
 		this.fights = fights;
 	}
 
-	public Event(String eventNumber, String title, LocalDateTime fightDate, String place, String information,
+	public Event(String eventNumber, String title, LocalDateTime fightDate, String place, String information, String eventPhoto,
 			List<Fight> fights) {
 		this.eventNumber = eventNumber;
 		this.title = title;
 		this.fightDate = fightDate;
 		this.place = place;
 		this.information = information;
+		this.eventPhoto = eventPhoto;
 		this.fights = fights;
 	}
 
@@ -102,6 +107,15 @@ public class Event {
 
 	public void setInformation(String information) {
 		this.information = information;
+	}
+	
+
+	public String getEventPhoto() {
+		return eventPhoto;
+	}
+
+	public void setEventPhoto(String eventPhoto) {
+		this.eventPhoto = eventPhoto;
 	}
 
 	public List<Fight> getFights() {
